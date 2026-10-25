@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Events | Smart Irrigation System{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div>
+        <p class="eyebrow">Events</p>
+        <h2>Irrigation and system event log</h2>
+    </div>
+</section>
+
+<section class="card panel">
+    <div class="panel-header">
+        <h3>Recent irrigation events</h3>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Moisture</th>
+                <th>Mode</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody id="event-table-body"></tbody>
+    </table>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

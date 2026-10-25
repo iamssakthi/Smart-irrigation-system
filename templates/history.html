@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}History | Smart Irrigation System{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div>
+        <p class="eyebrow">History</p>
+        <h2>Sensor readings and trends</h2>
+    </div>
+</section>
+
+<section class="card panel chart-panel">
+    <div class="panel-header">
+        <h3>Historical moisture chart</h3>
+        <div class="chip-row">
+            <span class="badge">Source filter: all</span>
+        </div>
+    </div>
+    <canvas id="history-chart" height="120"></canvas>
+    <p id="history-chart-empty" class="chart-empty hidden">No historical readings found. Simulate a moisture value to populate this graph.</p>
+</section>
+
+<section class="card panel table-panel">
+    <div class="panel-header">
+        <h3>Recent records</h3>
+        <button id="clear-history-btn" class="secondary-button">Clear history</button>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Device</th>
+                <th>Moisture</th>
+                <th>Soil</th>
+                <th>Pump</th>
+                <th>Mode</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody id="history-table-body"></tbody>
+    </table>
+    <p id="history-feedback" class="feedback">Ready.</p>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}

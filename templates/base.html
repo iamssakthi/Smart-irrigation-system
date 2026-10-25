@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Smart Irrigation System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!-- Chart.js served locally — no CDN dependency during demo -->
+    <script src="{{ url_for('static', filename='js/chart.umd.min.js') }}"></script>
+    <!-- Shared utilities (fetchJson, etc.) available on every page -->
+    <script src="{{ url_for('static', filename='js/shared.js') }}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-block">
+            <div class="brand-mark">SI</div>
+            <div>
+                <h1>Smart Irrigation System</h1>
+                <p>Intelligent Sensor-based Automated Irrigation</p>
+            </div>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="/overview" class="{% if request.path in ['/', '/overview'] %}active{% endif %}">Overview</a>
+            <a href="/history" class="{% if request.path == '/history' %}active{% endif %}">History</a>
+            <a href="/events" class="{% if request.path == '/events' %}active{% endif %}">Events</a>
+            <a href="/settings" class="{% if request.path == '/settings' %}active{% endif %}">Settings</a>
+            <a href="/about" class="{% if request.path == '/about' %}active{% endif %}">About Project</a>
+        </nav>
+    </header>
+
+    <main class="page-shell">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

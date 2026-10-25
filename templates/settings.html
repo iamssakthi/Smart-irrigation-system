@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings | Smart Irrigation System{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div>
+        <p class="eyebrow">Settings</p>
+        <h2>Threshold and system configuration</h2>
+    </div>
+</section>
+
+<section class="card panel form-panel">
+    <form id="settings-form">
+        <div class="field-grid">
+            <label>
+                <span>Dry threshold (%)</span>
+                <input id="dry-threshold-input" name="dry_threshold" type="number" min="0" max="100" step="0.1" value="35" />
+            </label>
+            <label>
+                <span>Wet threshold (%)</span>
+                <input id="wet-threshold-input" name="wet_threshold" type="number" min="0" max="100" step="0.1" value="45" />
+            </label>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="primary-button">Save thresholds</button>
+            <button type="button" id="reset-settings" class="secondary-button">Reset defaults</button>
+        </div>
+        <p id="settings-feedback" class="feedback">Configure the hysteresis thresholds.</p>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}
